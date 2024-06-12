@@ -3,7 +3,7 @@ import { Hono } from "hono";
 import "dotenv/config";
 import { restaurantRouter } from "./restaurants/restaurant.router";
 import { usersRouter } from "./users/users.router";
-import { cityRouter } from "./city/city.router"
+import { cityRouter } from "./city/city.router";
 import { menuitemRouter } from "./menu_items/menuitem.router";
 import { categoryRouter } from "./category/category.router";
 import { stateRouter } from "./state/state.router";
@@ -16,15 +16,21 @@ import { orderStatusRouter } from "./order status/orderstatus.router";
 import { statusCatalogRouter } from "./status catalog/statuscatalog.router";
 import { commentRouter } from "./comment/comment.router";
 import { authRouter } from "./auth/auth.router";
-import { html, raw } from "hono/html"
+import { html } from "hono/html";
 
 const app = new Hono();
 
 app.get("/", (c) => {
   return c.html(html`<!DOCTYPE html>
-      <h1>Hello Hono!</h1>
-      <p>Welcome to restaurant API</P>`
-  );
+    <html>
+      <head>
+        <title>Restaurant API</title>
+      </head>
+      <body>
+        <h1>Hello Hono!</h1>
+        <p>Welcome to restaurant API</p>
+      </body>
+    </html>`);
 });
 
 app.route("/api", restaurantRouter);

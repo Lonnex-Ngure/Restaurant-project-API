@@ -1,15 +1,21 @@
+// menuitem.service.ts
 import db from "../drizzle/db";
-import { menuitemTable } from "../drizzle/schema";
+import { menuitemTable, ordermenuitemTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const menuitemService = {
   list: async () => {
-    return await db.select().from(menuitemTable);
+    return await db
+      .select()
+      .from(menuitemTable)
+      .leftJoin(ordermenuitemTable, eq(ordermenuitemTable.menu_item_id, menuitemTable.id))
+      .execute();
   },
   getById: async (id: number) => {
     return await db
       .select()
       .from(menuitemTable)
+      .leftJoin(ordermenuitemTable, eq(ordermenuitemTable.menu_item_id, menuitemTable.id))
       .where(eq(menuitemTable.id, id))
       .execute();
   },

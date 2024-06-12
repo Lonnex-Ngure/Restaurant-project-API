@@ -192,7 +192,17 @@ GET http://localhost:8000/api/drivers/1
 
 ###
 //Create a new driver
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/drivers
+Content-Type: application/json
+
+{
+  "car_make": "Volkswagen",
+    "car_model": "civic",
+    "car_year": 2020,
+    "user_id": 1,
+    "online": true,
+    "delivering": true
+}
 
 ###
 //Update a driver by ID
@@ -224,15 +234,27 @@ GET http://localhost:8000/api/orderstatuses
 
 ###
 //Get an order status by ID
-GET http://localhost:8000/api/orderstatuses/1
+GET http://localhost:8000/api/orderstatuses/4
 
 ###
 //Create a new order status
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/orderstatuses
+Content-Type: application/json
+
+{
+    "order_id": 5,
+    "status_catalog_id": 2    
+}
 
 ###
 //Update an order status by ID
-PUT http://localhost:8000/api/
+PUT http://localhost:8000/api/orderstatuses/6
+Content-Type: application/json
+
+{
+    "order_id": 5,
+    "status_catalog_id": 3    
+}
 
 
 ###
@@ -260,15 +282,33 @@ GET http://localhost:8000/api/comments
 
 ###
 //Get a comment by ID
-GET http://localhost:8000/api/comments/1
+GET http://localhost:8000/api/comments/2
 
 ###
 //Create a new comment
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/comments
+Content-Type: application/json
+
+{
+    "order_id": 2,
+    "user_id": 1,
+    "comment_text": "delicious today finger licking",
+    "is_complaint": false,
+    "is_praise": true
+}
 
 ###
 //Update a comment by ID
-PUT http://localhost:8000/api/
+PUT http://localhost:8000/api/comments/6
+Content-Type: application/json
+
+{
+    "order_id": 2,
+    "user_id": 1,
+    "comment_text": "finger licking,,same order tomorrow",
+    "is_complaint": false,
+    "is_praise": true
+}
 
 
 ###
@@ -290,26 +330,25 @@ POST  http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "virginia",
-  "password": "password987"
+  "username": "Lonnex",
+  "password": "password12345678"
 }
 
 ###
 // Fetch all users as an admin
 GET http://localhost:8000/api/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgxMTI2NzB9.gnvFHAnUypxCeA700IAd8aYHLJYdBSzk-lf5XvTvxCI
-
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
 ###
 // Fetch a user by ID as a regular user
 GET http://localhost:8000/api/users/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MTEyNzM1fQ.tB_aakOArYDIn2AeiLtKZQZdOzuRMDfmYpT_0iZHaa8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
 
 ###
 //Create a new user as an admin
 POST http://localhost:8000/api/users
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgxMTY4NjR9.B-NnuOAEnc63Xtdm_vk5rP6Q0YaVh6YpPjeQ9XoXR8o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
 
 {
   "name": "Virginia wanjiru",
@@ -326,7 +365,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Update an Existing User (Admin Only)by id
 PUT http://localhost:8000/api/users/9
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgxMTY4NjR9.B-NnuOAEnc63Xtdm_vk5rP6Q0YaVh6YpPjeQ9XoXR8o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
 
 {
  "name": "virginia wanjiru",
@@ -338,3 +378,172 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
   "username": "virginia",
   "role": "user"
 }
+
+
+
+
+###
+//restaurants
+//Fetch all restaurants (admin)
+GET http://localhost:8000/api/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+
+###
+//Fetch a restaurant by ID (user)
+GET http://localhost:8000/api/restaurants/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+###
+//Update a restaurant (admin) by id
+PUT  http://localhost:8000/api/restaurants/4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+  "name": "Spicy Flavors",
+  "street_address": "456 oak St",
+  "Zip_code": "54321",
+  "city_id": 3
+}
+
+###
+//Create a new restaurant (admin)
+POST  http://localhost:8000/api/restaurants
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+  "name": "Inter Continental",
+  "street_address": "187 Kenyatta AV",
+  "Zip_code": "8934",
+  "city_id": 1
+}
+
+
+###
+//orders
+//Fetch all orders (admin)
+GET http://localhost:8000/api/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+
+###
+//Fetch an order by ID (user)
+GET http://localhost:8000/api/orders/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+###
+//Update an order by id (user)
+PUT  http://localhost:8000/api/orders/5
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+{
+  "restaurant_id": 3,
+  "delivery_address_id": 2,
+  "user_id": 3,
+  "price": 40.00,
+  "discount": 10.00,
+  "final_price": 30.00,
+  "comment": "more cheese and more sauce"
+}
+
+###
+//Create a new order (user)
+POST http://localhost:8000/api/orders
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+{
+  "restaurant_id": 1,
+  "estimated_delivery_time": "2024-06-12T12:00:00:00Z",
+  "delivery_address_id": 1,
+  "user_id": 5,
+  "price": 50,
+  "discount": 5,
+  "final_price": 45
+}
+
+
+###
+//cities/state
+//List Cities (users)
+GET http://localhost:8000/api/cities
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+###
+//Get City by ID (users)
+GET http://localhost:8000/api/cities/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+###
+//Create a City (Admin only)
+POST http://localhost:8000/api/cities
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+    "name": "Chicago",
+    "state_id": 1
+  }
+
+###
+//Update a City by id(Admin only)
+PUT http://localhost:8000/api/cities/3
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+    "name": "LOS ANGELES",
+    "state_id": 3
+  }
+
+###
+//Delete a City by id (Admin only)
+DELETE http://localhost:8000/api/cities/1
+
+###
+//menu item/ordermenuitem
+//List menu items (user)
+GET http://localhost:8000/api/menuitems
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+###
+//get menu items by id (user)
+GET http://localhost:8000/api/menuitems/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+
+###
+//create a new menu item (Admin)
+POST http://localhost:8000/api/menuitems
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+"name": "Pizza",
+  "restaurant_id": 4,
+  "category_id": 3,
+  "description": "Delicious cheese pizza",
+  "ingredients": "Cheese, Tomato, Dough",
+  "price": 9.99,
+  "active": true
+}
+
+###
+//update a new menu item by id (admin)
+PUT http://localhost:8000/api/menuitems/5
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+
+{
+"name": "Pizza",
+  "restaurant_id": 4,
+  "category_id": 3,
+  "description": "Delicious cheese pizza",
+  "ingredients": "Cheese, Tomato, Dough",
+  "price": 10.99,
+  "active": true
+}
+
+###
+//driver/orders

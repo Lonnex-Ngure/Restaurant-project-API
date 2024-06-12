@@ -86,7 +86,7 @@ export const driverSchema = z.object({
 
 export const ordersSchema = z.object({
   restaurant_id: z.number(),
-  estimated_delivery_time: z.string(),
+  estimated_delivery_time: z.string().optional(),
   actual_delivery_time: z.string().optional(),
   delivery_address_id: z.number(),
   user_id: z.number(),

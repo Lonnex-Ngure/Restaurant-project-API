@@ -27,7 +27,15 @@ export const createOrder = async (c: Context) => {
 export const updateOrder = async (c: Context) => {
   const id = c.req.param("id");
   const order = await c.req.json();
+  
+  // Log the received data for debugging
+  console.log("Received order data for update:", order);
+  
   const updatedOrder = await ordersService.update(Number(id), order);
+  
+  // Log the response from the service layer for debugging
+  console.log("Updated order data:", updatedOrder);
+  
   if (!updatedOrder) {
     return c.text("Order not found", 404);
   }

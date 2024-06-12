@@ -8,19 +8,22 @@ import {
 } from "./restaurant.controller";
 import { zValidator } from "@hono/zod-validator";
 import { restaurantschema } from "../validators";
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const restaurantRouter = new Hono();
 
-restaurantRouter.get("/restaurants", listRestaurants);
-restaurantRouter.get("/restaurants/:id", getRestaurantById);
+restaurantRouter.get("/restaurants", adminRoleAuth, listRestaurants);
+restaurantRouter.get("/restaurants/:id", userRoleAuth, getRestaurantById);
 restaurantRouter.post(
   "/restaurants",
+  adminRoleAuth,
   zValidator("json", restaurantschema),
   createRestaurant
 );
 restaurantRouter.put(
   "/restaurants/:id",
+  adminRoleAuth,
   zValidator("json", restaurantschema),
   updateRestaurant
 );
-restaurantRouter.delete("/restaurants/:id", deleteRestaurant);
+restaurantRouter.delete("/restaurants/:id", adminRoleAuth, deleteRestaurant);
