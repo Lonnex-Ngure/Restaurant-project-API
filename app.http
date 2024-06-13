@@ -829,3 +829,39 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUi
 //Delete a comment by id (user)
 DELETE   http://localhost:8000/api/comments/7
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//status catalog
+//Fetch all status catalogs (user)
+GET http://localhost:8000/api/statuscatalogs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aXJnaW5pYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjYzMTMyfQ.zT3kpGEdkJ52htYuDrddnJRpMHvV02r2KiqEqJMuo8g
+
+###
+//Fetch status catalog by ID (user)
+GET http://localhost:8000/api/statuscatalogs/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aXJnaW5pYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjYzMTMyfQ.zT3kpGEdkJ52htYuDrddnJRpMHvV02r2KiqEqJMuo8g
+
+###
+//Create a new status catalog (Admin)
+POST http://localhost:8000/api/statuscatalogs
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw
+
+{
+  "name": "delivering"
+}
+
+###
+//Update a status catalog by id (Admin)
+PUT http://localhost:8000/api/statuscatalogs/4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw
+
+{
+  "name": "packing"
+}
+
+###
+//Delete a status catalog by id (Admin)
+DELETE http://localhost:8000/api/statuscatalogs/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw

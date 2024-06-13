@@ -8,11 +8,12 @@ import {
 } from "./statuscatalog.controller";
 import { zValidator } from "@hono/zod-validator";
 import { statusCatalogSchema } from "../validators";
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const statusCatalogRouter = new Hono();
 
-statusCatalogRouter.get("/statuscatalogs", listStatusCatalogs);
-statusCatalogRouter.get("/statuscatalogs/:id", getStatusCatalogById);
-statusCatalogRouter.post("/statuscatalogs", zValidator("json", statusCatalogSchema), createStatusCatalog);
-statusCatalogRouter.put("/statuscatalogs/:id", zValidator("json", statusCatalogSchema), updateStatusCatalog);
-statusCatalogRouter.delete("/statuscatalogs/:id", deleteStatusCatalog);
+statusCatalogRouter.get("/statuscatalogs", userRoleAuth, listStatusCatalogs);
+statusCatalogRouter.get("/statuscatalogs/:id", userRoleAuth, getStatusCatalogById);
+statusCatalogRouter.post("/statuscatalogs", adminRoleAuth, zValidator("json", statusCatalogSchema), createStatusCatalog);
+statusCatalogRouter.put("/statuscatalogs/:id", adminRoleAuth, zValidator("json", statusCatalogSchema), updateStatusCatalog);
+statusCatalogRouter.delete("/statuscatalogs/:id", adminRoleAuth, deleteStatusCatalog);
