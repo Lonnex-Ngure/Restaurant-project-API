@@ -1,15 +1,29 @@
 import db from "../drizzle/db";
-import { categoryTable } from "../drizzle/schema";
+import { categoryTable, menuitemTable, restaurantTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const categoryService = {
   list: async () => {
-    return await db.select().from(categoryTable);
+    return await db
+      .select({
+        category: categoryTable,
+        menuitem: menuitemTable,
+        restaurant: restaurantTable,
+      })
+      .from(categoryTable)
+      .leftJoin(menuitemTable, eq(menuitemTable.category_id, categoryTable.id))
+      .leftJoin(restaurantTable, eq(restaurantTable.id, menuitemTable.restaurant_id));
   },
   getById: async (id: number) => {
     return await db
-      .select()
+      .select({
+        category: categoryTable,
+        menuitem: menuitemTable,
+        restaurant: restaurantTable,
+      })
       .from(categoryTable)
+      .leftJoin(menuitemTable, eq(menuitemTable.category_id, categoryTable.id))
+      .leftJoin(restaurantTable, eq(restaurantTable.id, menuitemTable.restaurant_id))
       .where(eq(categoryTable.id, id))
       .execute();
   },

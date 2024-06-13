@@ -1,15 +1,29 @@
 import db from "../drizzle/db";
-import { commentTable } from "../drizzle/schema";
+import { commentTable, usersTable, ordersTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const commentService = {
   list: async () => {
-    return await db.select().from(commentTable);
+    return await db
+      .select({
+        comment: commentTable,
+        user: usersTable,
+        order: ordersTable
+      })
+      .from(commentTable)
+      .leftJoin(usersTable, eq(commentTable.user_id, usersTable.id))
+      .leftJoin(ordersTable, eq(commentTable.order_id, ordersTable.id));
   },
   getById: async (id: number) => {
     return await db
-      .select()
+      .select({
+        comment: commentTable,
+        user: usersTable,
+        order: ordersTable
+      })
       .from(commentTable)
+      .leftJoin(usersTable, eq(commentTable.user_id, usersTable.id))
+      .leftJoin(ordersTable, eq(commentTable.order_id, ordersTable.id))
       .where(eq(commentTable.id, id))
       .execute();
   },

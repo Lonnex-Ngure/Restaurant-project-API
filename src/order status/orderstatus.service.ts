@@ -1,15 +1,25 @@
 import db from "../drizzle/db";
-import { orderstatusTable } from "../drizzle/schema";
+import { orderstatusTable, statuscatalogTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const orderStatusService = {
   list: async () => {
-    return await db.select().from(orderstatusTable);
+    return await db
+      .select({
+        orderstatus: orderstatusTable,
+        statuscatalog: statuscatalogTable
+      })
+      .from(orderstatusTable)
+      .leftJoin(statuscatalogTable, eq(orderstatusTable.status_catalog_id, statuscatalogTable.id));
   },
   getById: async (id: number) => {
     return await db
-      .select()
+      .select({
+        orderstatus: orderstatusTable,
+        statuscatalog: statuscatalogTable
+      })
       .from(orderstatusTable)
+      .leftJoin(statuscatalogTable, eq(orderstatusTable.status_catalog_id, statuscatalogTable.id))
       .where(eq(orderstatusTable.id, id))
       .execute();
   },

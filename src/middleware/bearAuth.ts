@@ -1,4 +1,3 @@
-// bearAuth.ts
 import "dotenv/config";
 import { verify } from "hono/jwt";
 import { Context, Next } from "hono";

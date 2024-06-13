@@ -1,15 +1,25 @@
 import db from "../drizzle/db";
-import { stateTable } from "../drizzle/schema";
+import { stateTable, cityTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const stateService = {
   list: async () => {
-    return await db.select().from(stateTable);
+    return await db
+      .select({
+        state: stateTable,
+        city: cityTable
+      })
+      .from(stateTable)
+      .leftJoin(cityTable, eq(cityTable.state_id, stateTable.id));
   },
   getById: async (id: number) => {
     return await db
-      .select()
+      .select({
+        state: stateTable,
+        city: cityTable
+      })
       .from(stateTable)
+      .leftJoin(cityTable, eq(cityTable.state_id, stateTable.id))
       .where(eq(stateTable.id, id))
       .execute();
   },

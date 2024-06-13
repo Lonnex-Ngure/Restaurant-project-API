@@ -8,11 +8,12 @@ import {
 } from "./state.controller";
 import { zValidator } from "@hono/zod-validator";
 import { stateSchema } from "../validators";
+import { userRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
 export const stateRouter = new Hono();
 
-stateRouter.get("/states", listStates);
-stateRouter.get("/states/:id", getStateById);
-stateRouter.post("/states", zValidator("json", stateSchema), createState);
-stateRouter.put("/states/:id", zValidator("json", stateSchema), updateState);
-stateRouter.delete("/states/:id", deleteState);
+stateRouter.get("/states", userRoleAuth, listStates);
+stateRouter.get("/states/:id", userRoleAuth, getStateById);
+stateRouter.post("/states", adminRoleAuth, zValidator("json", stateSchema), createState);
+stateRouter.put("/states/:id", adminRoleAuth, zValidator("json", stateSchema), updateState);
+stateRouter.delete("/states/:id", adminRoleAuth, deleteState);

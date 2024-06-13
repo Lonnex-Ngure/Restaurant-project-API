@@ -1,18 +1,25 @@
 import db from "../drizzle/db";
-import { driverTable } from "../drizzle/schema";
+import { driverTable, ordersTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const driverService = {
   list: async () => {
-    return await db.select().from(driverTable);
+    return await db
+      .select()
+      .from(driverTable)
+      .leftJoin(ordersTable, eq(ordersTable.driver_id, driverTable.id))
+      .execute();
   },
+
   getById: async (id: number) => {
     return await db
       .select()
       .from(driverTable)
+      .leftJoin(ordersTable, eq(ordersTable.driver_id, driverTable.id))
       .where(eq(driverTable.id, id))
       .execute();
   },
+
   create: async (driver: any) => {
     return await db
       .insert(driverTable)
@@ -20,6 +27,7 @@ export const driverService = {
       .returning()
       .execute();
   },
+  
   update: async (id: number, driver: any) => {
     return await db
       .update(driverTable)
@@ -28,6 +36,7 @@ export const driverService = {
       .returning()
       .execute();
   },
+  
   delete: async (id: number) => {
     return await db
       .delete(driverTable)

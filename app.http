@@ -386,8 +386,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //restaurants
 //Fetch all restaurants (admin)
 GET http://localhost:8000/api/restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
 
 ###
 //Fetch a restaurant by ID (user)
@@ -547,3 +546,286 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 
 ###
 //driver/orders
+//List Drivers (User)
+GET http://localhost:8000/api/drivers
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Get Driver by ID (User)
+GET http://localhost:8000/api/drivers/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Create Driver (Admin)
+POST http://localhost:8000/api/drivers
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+
+{
+"car_make": "Toyota",
+  "car_model": "mercedes",
+  "car_year": 2022,
+  "user_id": 1,
+  "online": true,
+  "delivering": false
+}
+
+###
+//Update Driver by id (Admin)
+PUT http://localhost:8000/api/drivers/2
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+
+{
+"car_make": "Toyota",
+  "car_model": "mazda",
+  "car_year": 2020,
+  "user_id": 3,
+  "online": true,
+  "delivering": false
+}
+
+###
+//Adrresses
+//List Addresses (user)
+GET http://localhost:8000/api/addresses
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Get Address by ID (user)
+GET http://localhost:8000/api/addresses/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Create Address (user)
+POST http://localhost:8000/api/addresses
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+{
+  "street_address_1": "123 main St",
+    "street_address_2": "Spring field 201",
+    "zip_code": "10002",
+    "delivery_instructions": "leave at the reception",
+    "user_id": 9,
+    "city_id": 3
+}
+
+###
+//Update Adress by id (user)
+PUT http://localhost:8000/api/addresses/5
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+{
+  "street_address_1": "123 main St",
+    "street_address_2": "Spring field 201",
+    "zip_code": "10002",
+    "delivery_instructions": "call once arrived",
+    "user_id": 9,
+    "city_id": 3
+}
+
+###
+//Delete Address by id (admin)
+DELETE http://localhost:8000/api/addresses/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+
+
+###
+//restaurant owner
+//List Restaurant Owners (user)
+GET http://localhost:8000/api/restaurant_owners
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Get Restaurant Owner by ID (user)
+GET http://localhost:8000/api/restaurant_owners/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+###
+//Create Restaurant Owner (user)
+POST http://localhost:8000/api/restaurant_owners
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+{
+  "restaurant_id": 3,
+    "owner_id": 3
+}
+
+###
+//Update Restaurant Owner by id (user)
+PUT http://localhost:8000/api/restaurant_owners/6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+
+{
+  "restaurant_id": 4,
+    "owner_id": 3
+}
+
+###
+//Delete Restaurant Owner by id (Admin)
+DELETE http://localhost:8000/api/restaurant_owners/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+
+
+###
+//states
+//List States (user)
+GET http://localhost:8000/api/states
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Get State by ID (user)
+GET http://localhost:8000/api/states/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Create State (Admin)
+POST  http://localhost:8000/api/states
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "name": "Florida",
+  "code": "FL"
+}
+
+###
+//Update State by id (Admin)
+PUT   http://localhost:8000/api/states/4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "name": "Florida",
+  "code": "flor"
+}
+
+###
+//Delete State (Admin)
+DELETE http://localhost:8000/api/states/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+
+###
+//category/menu-item/restaurant
+//Fetch all categories (user)
+GET http://localhost:8000/api/categories
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Fetch category by ID (user)
+GET http://localhost:8000/api/categories/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Create a new category (Admin)
+POST http://localhost:8000/api/categories 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "name": "chineese"
+}
+
+###
+//Update a category by id (Admin)
+PUT http://localhost:8000/api/categories/4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "name": "spanish"
+}
+
+###
+//delete category by id (Admin)
+DELETE http://localhost:8000/api/categories/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+
+###
+//order-status/status-catalog
+//Fetch all order statuses (user)
+GET http://localhost:8000/api/orderstatuses
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Fetch order status by ID (user)
+GET http://localhost:8000/api/orderstatuses/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+###
+//Create a new order status (Admin)
+POST  http://localhost:8000/api/orderstatuses
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "order_id": 5,
+      "status_catalog_id": 2
+}
+
+###
+//Update an order status by id  (Admin)
+PUT  http://localhost:8000/api/orderstatuses/8
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+{
+  "order_id": 5,
+      "status_catalog_id": 1
+}
+
+###
+//Delete an order status (Admin)
+DELETE http://localhost:8000/api/orderstatuses/8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+
+###
+//comments/users/orders
+//Fetch all comments (Admin)
+GET http://localhost:8000/api/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+###
+//Fetch comment by ID (Admin)
+GET http://localhost:8000/api/comments/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+
+###
+//Create a new comment (user)
+POST  http://localhost:8000/api/comments
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+{
+  "order_id": 6,
+      "user_id": 5,
+      "comment_text": "this is what i was craving for,,thumbs up",
+      "is_complaint": false,
+      "is_praise": true
+}
+
+###
+//Update a comment by id(user)
+PUT  http://localhost:8000/api/comments/7
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+
+{
+  "order_id": 6,
+      "user_id": 5,
+      "comment_text": "too chilly",
+      "is_complaint": true,
+      "is_praise": false
+}
+
+###
+//Delete a comment by id (user)
+DELETE   http://localhost:8000/api/comments/7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y

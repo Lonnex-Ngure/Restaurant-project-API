@@ -8,11 +8,12 @@ import {
 } from "./category.controller";
 import { zValidator } from "@hono/zod-validator";
 import { categorySchema } from "../validators";
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const categoryRouter = new Hono();
 
-categoryRouter.get("/categories", listCategories);
-categoryRouter.get("/categories/:id", getCategoryById);
-categoryRouter.post("/categories", zValidator("json", categorySchema), createCategory);
-categoryRouter.put("/categories/:id", zValidator("json", categorySchema), updateCategory);
-categoryRouter.delete("/categories/:id", deleteCategory);
+categoryRouter.get("/categories", userRoleAuth, listCategories);
+categoryRouter.get("/categories/:id", userRoleAuth, getCategoryById);
+categoryRouter.post("/categories", adminRoleAuth, zValidator("json", categorySchema), createCategory);
+categoryRouter.put("/categories/:id", adminRoleAuth, zValidator("json", categorySchema), updateCategory);
+categoryRouter.delete("/categories/:id", adminRoleAuth, deleteCategory);
