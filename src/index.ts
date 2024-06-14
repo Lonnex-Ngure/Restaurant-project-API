@@ -32,7 +32,7 @@ app.get("/", (c) => {
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
           }
           .container {
@@ -75,20 +75,20 @@ app.get("/", (c) => {
           <h1>Hello Visitor!</h1>
           <p>Welcome to restaurant API by Lonnex Ngure!</p>
           <nav>
-            <a href="/api/restaurant">Restaurant</a>
+            <a href="/api/restaurants">Restaurant</a>
             <a href="/api/users">Users</a>
-            <a href="/api/city">City</a>
-            <a href="/api/menuitem">Menu Items</a>
-            <a href="/api/category">Category</a>
-            <a href="/api/state">State</a>
-            <a href="/api/address">Address</a>
-            <a href="/api/ordermenuitem">Order Menu Items</a>
-            <a href="/api/restaurantowner">Restaurant Owner</a>
-            <a href="/api/driver">Driver</a>
+            <a href="/api/cities">City</a>
+            <a href="/api/menuitems">Menu Items</a>
+            <a href="/api/categories">Category</a>
+            <a href="/api/state">States</a>
+            <a href="/api/address">Addresses</a>
+            <a href="/api/order_menu_items">Order Menu Items</a>
+            <a href="/api/restaurant_owner">Restaurant Owner</a>
+            <a href="/api/drivers">Driver</a>
             <a href="/api/orders">Orders</a>
-            <a href="/api/orderstatus">Order Status</a>
-            <a href="/api/statuscatalog">Status Catalog</a>
-            <a href="/api/comment">Comments</a>
+            <a href="/api/orderstatuses">Order Status</a>
+            <a href="/api/statuscatalogs">Status Catalog</a>
+            <a href="/api/comments">Comments</a>
           </nav>
         </div>
       </body>
