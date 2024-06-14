@@ -3,15 +3,62 @@ import { ordersTable } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export const ordersService = {
-  list: async () => {
-    return await db.select().from(ordersTable);
+  listOrders: async () => {
+    return await db.query.ordersTable.findMany({
+      columns: {
+        id: true,
+        delivery_address_id: true,
+        driver_id: true,
+        final_price: true,
+      },
+      with: {
+        deliveryAddress: {
+          columns: {
+            id: true,
+            street_address_1: true,
+            street_address_2: true,
+            zip_code: true,
+          },
+        },
+        driver: {
+          columns: {
+            id: true,
+            car_make: true,
+            car_model: true,
+            car_year: true,
+          },
+        },
+      },
+    });
   },
-  getById: async (id: number) => {
-    return await db
-      .select()
-      .from(ordersTable)
-      .where(eq(ordersTable.id, id))
-      .execute();
+  getOrderById: async (id: number) => {
+    return await db.query.ordersTable.findFirst({
+      columns: {
+        id: true,
+        delivery_address_id: true,
+        driver_id: true,
+        final_price: true,
+      },
+      where: (ordersTable) => eq(ordersTable.id, id),
+      with: {
+        deliveryAddress: {
+          columns: {
+            id: true,
+            street_address_1: true,
+            street_address_2: true,
+            zip_code: true,
+          },
+        },
+        driver: {
+          columns: {
+            id: true,
+            car_make: true,
+            car_model: true,
+            car_year: true,
+          },
+        },
+      },
+    });
   },
   create: async (order: any) => {
     return await db

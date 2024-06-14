@@ -34,8 +34,8 @@ Content-Type: application/json
 ###
 //users table
 //list all users
-GET http://localhost:8000/api/users/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgwNzY3NzZ9.FvQD7gLOBMVLfdti1xDNJSAF9MFeOY5A7T1stps50DA
+GET http://localhost:8000/api/users
+
 
 ###
 //get user by id
@@ -68,11 +68,23 @@ GET http://localhost:8000/api/cities/4
 
 ###
 //create new city
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/cities
+Content-Type: application/json
+
+{
+    "name": "Chicago",
+    "state_id": 1
+  }
 
 ###
 //update city by id
-PUT http://localhost:8000/api/
+PUT http://localhost:8000/api/cities/
+Content-Type: application/json
+
+{
+    "name": "Chicago",
+    "state_id": 1
+  }
 
 ###
 //menu_item table
@@ -103,10 +115,20 @@ GET http://localhost:8000/api/categories/1
 ###
 //Create a new category
 POST  http://localhost:8000/api/categories
+Content-Type: application/json
+
+{
+  "name": "chineese"
+}
 
 ###
 //Update a category by ID
 PUT   http://localhost:8000/api/categories/1
+Content-Type: application/json
+
+{
+  "name": "spanish"
+}
 
 
 ###
@@ -138,7 +160,17 @@ GET http://localhost:8000/api/addresses/2
 
 ###
 //Create a new address
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/addresses
+Content-Type: application/json
+
+{
+  "street_address_1": "123 main St",
+    "street_address_2": "Spring field 201",
+    "zip_code": "10002",
+    "delivery_instructions": "leave at the reception",
+    "user_id": 9,
+    "city_id": 3
+}
 
 ###
 //Update an address by ID
@@ -174,7 +206,13 @@ GET http://localhost:8000/api/restaurant_owners/1
 
 ###
 //Create a new restaurant owner
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/restaurant_owners
+Content-Type: application/json
+
+{
+  "restaurant_id": 3,
+    "owner_id": 3
+}
 
 ###
 //Update a restaurant owner by ID
@@ -220,7 +258,18 @@ GET http://localhost:8000/api/orders/2
 
 ###
 //Create a new order
-POST  http://localhost:8000/api/
+POST  http://localhost:8000/api/orders
+Content-Type: application/json
+
+{
+  "restaurant_id": 1,
+  "estimated_delivery_time": "2024-06-12T12:00:00:00Z",
+  "delivery_address_id": 1,
+  "user_id": 5,
+  "price": 50,
+  "discount": 5,
+  "final_price": 45
+}
 
 ###
 //Update an order by ID
@@ -330,25 +379,25 @@ POST  http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "Lonnex",
-  "password": "password12345678"
+  "username": "sarah",
+  "password": "password123"
 }
 
 ###
 // Fetch all users as an admin
 GET http://localhost:8000/api/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+//Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
+
 ###
 // Fetch a user by ID as a regular user
 GET http://localhost:8000/api/users/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create a new user as an admin
 POST http://localhost:8000/api/users
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "Virginia wanjiru",
@@ -365,8 +414,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Update an Existing User (Admin Only)by id
 PUT http://localhost:8000/api/users/9
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
  "name": "virginia wanjiru",
@@ -386,18 +434,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //restaurants
 //Fetch all restaurants (admin)
 GET http://localhost:8000/api/restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 ###
 //Fetch a restaurant by ID (user)
 GET http://localhost:8000/api/restaurants/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 ###
 //Update a restaurant (admin) by id
 PUT  http://localhost:8000/api/restaurants/4
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "Spicy Flavors",
@@ -410,8 +457,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Create a new restaurant (admin)
 POST  http://localhost:8000/api/restaurants
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 {
   "name": "Inter Continental",
   "street_address": "187 Kenyatta AV",
@@ -424,19 +470,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //orders
 //Fetch all orders (admin)
 GET http://localhost:8000/api/orders
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 ###
 //Fetch an order by ID (user)
 GET http://localhost:8000/api/orders/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 ###
 //Update an order by id (user)
 PUT  http://localhost:8000/api/orders/5
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "restaurant_id": 3,
@@ -452,7 +496,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUi
 //Create a new order (user)
 POST http://localhost:8000/api/orders
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "restaurant_id": 1,
@@ -469,17 +513,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUi
 //cities/state
 //List Cities (users)
 GET http://localhost:8000/api/cities
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Get City by ID (users)
 GET http://localhost:8000/api/cities/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 ###
 //Create a City (Admin only)
 POST http://localhost:8000/api/cities
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
     "name": "Chicago",
@@ -490,34 +534,35 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Update a City by id(Admin only)
 PUT http://localhost:8000/api/cities/3
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
-    "name": "LOS ANGELES",
+    "name": "LOS angeles",
     "state_id": 3
   }
 
 ###
 //Delete a City by id (Admin only)
 DELETE http://localhost:8000/api/cities/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
+
 
 ###
 //menu item/ordermenuitem
 //List menu items (user)
 GET http://localhost:8000/api/menuitems
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //get menu items by id (user)
 GET http://localhost:8000/api/menuitems/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjA1NDE5fQ.-pPDuDcTpGkzjhIuTAlZOXmWYZvUiQwQFAQ1_Q21onE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //create a new menu item (Admin)
 POST http://localhost:8000/api/menuitems
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 {
 "name": "Pizza",
   "restaurant_id": 4,
@@ -532,8 +577,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //update a new menu item by id (admin)
 PUT http://localhost:8000/api/menuitems/5
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMDU2NTN9.OKzw_jGrkgx50mU5CAYfhX7aoa-DlwBR1fU-prEQSSs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 {
 "name": "Pizza",
   "restaurant_id": 4,
@@ -548,18 +592,18 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //driver/orders
 //List Drivers (User)
 GET http://localhost:8000/api/drivers
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Get Driver by ID (User)
 GET http://localhost:8000/api/drivers/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create Driver (Admin)
 POST http://localhost:8000/api/drivers
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
 "car_make": "Toyota",
@@ -574,7 +618,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Update Driver by id (Admin)
 PUT http://localhost:8000/api/drivers/2
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
 "car_make": "Toyota",
@@ -589,18 +633,18 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Adrresses
 //List Addresses (user)
 GET http://localhost:8000/api/addresses
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Get Address by ID (user)
 GET http://localhost:8000/api/addresses/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create Address (user)
 POST http://localhost:8000/api/addresses
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "street_address_1": "123 main St",
@@ -615,7 +659,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUi
 //Update Adress by id (user)
 PUT http://localhost:8000/api/addresses/5
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "street_address_1": "123 main St",
@@ -629,26 +673,25 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUi
 ###
 //Delete Address by id (admin)
 DELETE http://localhost:8000/api/addresses/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 
 ###
 //restaurant owner
 //List Restaurant Owners (user)
 GET http://localhost:8000/api/restaurant_owners
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Get Restaurant Owner by ID (user)
 GET http://localhost:8000/api/restaurant_owners/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create Restaurant Owner (user)
 POST http://localhost:8000/api/restaurant_owners
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 {
   "restaurant_id": 3,
     "owner_id": 3
@@ -658,7 +701,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUi
 //Update Restaurant Owner by id (user)
 PUT http://localhost:8000/api/restaurant_owners/6
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjI1MjA0fQ.Xb-TOXq-XjgxoQaHCGTcTtedBSwMzCwqzlFhRqbbR3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "restaurant_id": 4,
@@ -668,25 +711,25 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUi
 ###
 //Delete Restaurant Owner by id (Admin)
 DELETE http://localhost:8000/api/restaurant_owners/6
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyMjU0NDd9.Wc4e-c0mmceBukWaetG7Z8akRPAJjluzH9Ev9IX63e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 
 ###
-//states
+//states/city
 //List States (user)
 GET http://localhost:8000/api/states
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Get State by ID (user)
 GET http://localhost:8000/api/states/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create State (Admin)
 POST  http://localhost:8000/api/states
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "Florida",
@@ -695,37 +738,37 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 
 ###
 //Update State by id (Admin)
-PUT   http://localhost:8000/api/states/4
+PUT   http://localhost:8000/api/states/6
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "Florida",
-  "code": "flor"
+  "code": "flori"
 }
 
 ###
 //Delete State (Admin)
-DELETE http://localhost:8000/api/states/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+DELETE http://localhost:8000/api/states/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 
 ###
 //category/menu-item/restaurant
 //Fetch all categories (user)
 GET http://localhost:8000/api/categories
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Fetch category by ID (user)
 GET http://localhost:8000/api/categories/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create a new category (Admin)
 POST http://localhost:8000/api/categories 
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "chineese"
@@ -733,36 +776,35 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 
 ###
 //Update a category by id (Admin)
-PUT http://localhost:8000/api/categories/4
+PUT http://localhost:8000/api/categories/5
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 {
   "name": "spanish"
 }
 
 ###
 //delete category by id (Admin)
-DELETE http://localhost:8000/api/categories/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+DELETE http://localhost:8000/api/categories/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 
 ###
 //order-status/status-catalog
 //Fetch all order statuses (user)
 GET http://localhost:8000/api/orderstatuses
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Fetch order status by ID (user)
 GET http://localhost:8000/api/orderstatuses/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Create a new order status (Admin)
 POST  http://localhost:8000/api/orderstatuses
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "order_id": 5,
@@ -773,7 +815,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 //Update an order status by id  (Admin)
 PUT  http://localhost:8000/api/orderstatuses/8
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "order_id": 5,
@@ -783,25 +825,24 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 ###
 //Delete an order status (Admin)
 DELETE http://localhost:8000/api/orderstatuses/8
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 
 ###
 //comments/users/orders
 //Fetch all comments (Admin)
 GET http://localhost:8000/api/comments
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 ###
 //Fetch comment by ID (Admin)
 GET http://localhost:8000/api/comments/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNDMwMDh9.VJqYr0TmqDUkze1YeIhSWU_RuDQohcwp5rdmmwNvsSo
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 ###
 //Create a new comment (user)
 POST  http://localhost:8000/api/comments
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "order_id": 6,
@@ -815,7 +856,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUi
 //Update a comment by id(user)
 PUT  http://localhost:8000/api/comments/7
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 {
   "order_id": 6,
@@ -828,24 +869,23 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUi
 ###
 //Delete a comment by id (user)
 DELETE   http://localhost:8000/api/comments/7
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbWlseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjQyNjUzfQ.b50H5nFkpFhu9XzxaeGJ3Ef2FbxEUo5M_Kp7WyU7j3Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //status catalog
 //Fetch all status catalogs (user)
 GET http://localhost:8000/api/statuscatalogs
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aXJnaW5pYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjYzMTMyfQ.zT3kpGEdkJ52htYuDrddnJRpMHvV02r2KiqEqJMuo8g
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 
 ###
 //Fetch status catalog by ID (user)
 GET http://localhost:8000/api/statuscatalogs/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aXJnaW5pYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjYzMTMyfQ.zT3kpGEdkJ52htYuDrddnJRpMHvV02r2KiqEqJMuo8g
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjk0Nzk0fQ.NRK3qLhnzy7TVJ-PU2EVylywZLmmcMOS3kVNWE3swsU
 ###
 //Create a new status catalog (Admin)
 POST http://localhost:8000/api/statuscatalogs
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "delivering"
@@ -853,9 +893,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 
 ###
 //Update a status catalog by id (Admin)
-PUT http://localhost:8000/api/statuscatalogs/4
+PUT http://localhost:8000/api/statuscatalogs/5
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
 
 {
   "name": "packing"
@@ -863,5 +903,5 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xl
 
 ###
 //Delete a status catalog by id (Admin)
-DELETE http://localhost:8000/api/statuscatalogs/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyNjMyOTZ9.6ko2GAYB9I8-da7FhoZVSwMbNyx6O4mvaWPfFjzDhyw
+DELETE http://localhost:8000/api/statuscatalogs/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs

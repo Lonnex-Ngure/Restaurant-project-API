@@ -232,6 +232,10 @@ export const ordersRelations = relations(ordersTable, ({ one }) => ({
     fields: [ordersTable.driver_id],
     references: [driverTable.id],
   }),
+  deliveryAddress: one(addressTable, {
+    fields: [ordersTable.delivery_address_id],
+    references: [addressTable.id],
+  }),
 }));
 
 export const restaurantRelations = relations(restaurantTable, ({ one }) => ({

@@ -27,8 +27,8 @@ app.get("/", (c) => {
         <title>Restaurant API</title>
       </head>
       <body>
-        <h1>Hello Hono!</h1>
-        <p>Welcome to restaurant API</p>
+        <h1>Hello Visitor!</h1>
+        <p>Welcome to restaurant API by Lonnex Ngure!</p>
       </body>
     </html>`);
 });

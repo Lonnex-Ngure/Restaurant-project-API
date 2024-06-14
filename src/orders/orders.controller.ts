@@ -2,7 +2,7 @@ import { Context } from "hono";
 import { ordersService } from "./orders.service";
 
 export const listOrders = async (c: Context) => {
-  const data = await ordersService.list();
+  const data = await ordersService.listOrders();
   if (!data || data.length === 0) {
     return c.text("No orders found", 404);
   }
@@ -11,7 +11,7 @@ export const listOrders = async (c: Context) => {
 
 export const getOrderById = async (c: Context) => {
   const id = c.req.param("id");
-  const data = await ordersService.getById(Number(id));
+  const data = await ordersService.getOrderById(Number(id));
   if (!data) {
     return c.text("Order not found", 404);
   }
