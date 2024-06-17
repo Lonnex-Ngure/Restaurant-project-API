@@ -3,6 +3,7 @@ import { Context } from "hono";
 import { createAuthUserService, userLoginService } from "./auth.service";
 import bcrypt from "bcrypt";
 import { sign } from "hono/jwt";
+import { sendWelcomeEmail } from "../email.service";
 
 export const registerUser = async (c: Context) => {
   try {
@@ -12,6 +13,9 @@ export const registerUser = async (c: Context) => {
     user.password = hashedPassword;
     const createdUser = await createAuthUserService(user);
     if (!createdUser) return c.text("User not created", 404);
+
+    await sendWelcomeEmail(user.email, user.name);
+
     return c.json({ msg: createdUser }, 201);
   } catch (error: any) {
     return c.json({ error: error?.message }, 400);

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Our Restaurant</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .email-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
+      .email-header {
+        background-color: #4caf50;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .email-body {
+        padding: 20px;
+      }
+      .email-body h1 {
+        color: #333333;
+      }
+      .email-body p {
+        color: #666666;
+        line-height: 1.5;
+      }
+      .email-footer {
+        background-color: #f4f4f4;
+        color: #666666;
+        padding: 10px;
+        text-align: center;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="email-header">
+        <h1>Welcome to Our Restaurant</h1>
+      </div>
+      <div class="email-body">
+        <h1>Hello, <%= name %>!</h1>
+        <p>
+          Thank you for registering at our restaurant. We are thrilled to have
+          you with us. Enjoy an unforgettable dining experience with our
+          exquisite menu and exceptional service.
+        </p>
+        <p>
+          Explore our offerings and feel free to reach out if you need any
+          assistance. We are here to make your visit truly special.
+        </p>
+        <p>Best Regards,<br />Taste Titans</p>
+      </div>
+      <div class="email-footer">
+        &copy; <%= new Date().getFullYear() %> Our Restaurant. All rights
+        reserved.
+      </div>
+    </div>
+  </body>
+</html>

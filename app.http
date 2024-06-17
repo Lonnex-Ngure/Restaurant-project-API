@@ -368,9 +368,10 @@ Content-Type: application/json
 
 {
 "user_id": 5,
-  "username": "virginia",
-  "password": "password987",
-  "role": "user"
+  "username": "lonnex",
+  "password": "password12345678",
+  "email":"waithaka.14956@students.kyu.ac.ke",
+  "role": "admin"
 }
 
 ###
@@ -379,15 +380,14 @@ POST  http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "sarah",
-  "password": "password123"
+  "username": "lonnex",
+  "password": "password12345678"
 }
 
 ###
 // Fetch all users as an admin
 GET http://localhost:8000/api/users
-//Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTg2NDQ1MDN9.JV5lhI4NbNeSxgSjG3PpB3BajE_A6WvhyapPyvmEMrY
 ###
 // Fetch a user by ID as a regular user
 GET http://localhost:8000/api/users/5
@@ -397,16 +397,16 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCIsInJvbGUi
 //Create a new user as an admin
 POST http://localhost:8000/api/users
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTgyOTM1OTd9.a8rauvidB9K1hs-i48YAKWsWJmCeusRRmPmITWY8CZs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMb25uZXgiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTg0NzY4OTJ9.CxeTrufNoFjAIhW5rIFDRdefRnD7FH_Qb6rzLxkc5F0
 
 {
-  "name": "Virginia wanjiru",
-  "contact_phone": "123-456-7890",
+  "name": "John Waithaka",
+  "contact_phone": "0725757441",
   "phone_verified": true,
-  "email": "virginia@gmail.com",
+  "email": "waithaka.14956@students.kyu.ac.ke",
   "email_verified": true,
-  "password": "newpassword123",
-  "username": "virginia",
+  "password": "password099",
+  "username": "johnie",
   "role": "user"
 }
 

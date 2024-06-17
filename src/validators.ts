@@ -122,6 +122,7 @@ export const registerUserSchema = z.object({
   user_id: z.number().optional(),
   username: z.string(),
   password: z.string(),
+  email: z.string().email(), 
   role: z.string().optional(),
 });
 

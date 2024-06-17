@@ -184,6 +184,7 @@ export const authTable = pgTable("auth", {
     .references(() => usersTable.id),
   username: varchar("username").notNull(),
   password: varchar("password").notNull(),
+  email: varchar("email").notNull(),
   role: varchar("role").notNull(),
   created_at: timestamp("created_at").notNull().defaultNow(),
   updated_at: timestamp("updated_at").notNull().defaultNow(),
